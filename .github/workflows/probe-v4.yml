@@ -1,0 +1,7 @@
+name: Call v4
+on: push
+jobs:
+  call:
+    uses: project-graphite/actions/.github/workflows/probe-v4.yml@fix/matrix-outputs
+    with:
+      services: '["web"]'
