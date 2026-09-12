@@ -1,0 +1,5 @@
+name: Probe B gitleaks
+on: push
+jobs:
+  scan:
+    uses: project-graphite/actions/.github/workflows/reusable-gitleaks.yml@v1

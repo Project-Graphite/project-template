@@ -1,0 +1,5 @@
+name: Probe A detect
+on: push
+jobs:
+  services:
+    uses: project-graphite/actions/.github/workflows/reusable-detect-services.yml@v1

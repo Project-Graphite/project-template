@@ -1,0 +1,7 @@
+name: Probe C control
+on: push
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "inline job runs"
