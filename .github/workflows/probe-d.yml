@@ -1,7 +1,0 @@
-name: Probe D checks literal
-on: push
-jobs:
-  checks:
-    uses: project-graphite/actions/.github/workflows/reusable-checks.yml@v1
-    with:
-      services: '["web"]'
