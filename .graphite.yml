@@ -7,14 +7,11 @@
 # and its child projects together (see windhawk-mods/.graphite.yml for a real example). Most
 # repos, including this template, register exactly one.
 #
-# Do NOT add a `repo` field: it is derived automatically from this repository's name and
-# rejected if present (schema has `additionalProperties: false`).
+# Do not add a `repo` field: the registry sync sets it from this repository's name and
+# overwrites any value given here.
 #
-# This file shows every field the schema allows. The entry below is the real, active
-# registration for project-template itself (kept minimal and valid); every field or block that
-# doesn't apply to a plain, unlisted, non-deployed project is included as a comment instead of a
-# second list entry, so this file stays a single, always-valid example rather than something that
-# would try to register decoy projects.
+# The entry below is project-template's own registration; replace it in a new repository.
+# Fields and blocks it does not use are shown as comments.
 
 projects:
   - slug: project-template # required. Lowercase, matches the repo name. ^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$
@@ -23,9 +20,7 @@ projects:
     # Optional. Set this only when this project is a child of an epic declared elsewhere in the
     # registry (same pattern as slug). The referenced entry must have kind: epic, must itself be
     # top-level (no parent of its own), and this project's repo must be the same repository as
-    # the epic's — in practice that means the parent and its children are usually declared
-    # together in the epic repo's own .graphite.yml, exactly like windhawk-mods/.graphite.yml
-    # declares windhawk-mods (the epic) plus stack-switch and tasktune (its children).
+    # the epic's.
 
     kind: project # required. One of: project | epic. An epic is a project that groups children via their `parent`.
     name: Project template # required. 2-60 characters, the display name.
@@ -77,4 +72,4 @@ projects:
       # source:
       #   directory: web-app                    # required. Lowercase kebab-case source directory to build.
       #   output: dist                          # required. Build output directory, relative to `directory`.
-      #   command: npm run build                # optional. Defaults to the platform's standard build command if omitted.
+      #   command: npm run build                # optional. Recorded for reference; the Cloudflare Pages project defines the build.

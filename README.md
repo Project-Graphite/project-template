@@ -24,18 +24,20 @@ Then open http://localhost:8080.
 
 Delete this section once the checklist is done.
 
-1. Rename the placeholder service. Every top-level folder containing a `Dockerfile` is a deployable
-   service and is built and pushed automatically.
-2. Give each service its checks. A folder with a `package.json` gets `npm ci` followed by available
+1. Replace the registry entry in `.graphite.yml`, which is the template's own. Set `slug` to the
+   lowercase repository name and update `name`, `summary`, `tags`, `owner`, `authors`, `status`,
+   `listed`, and `deploy`. Pushing it to `main` registers the project through the Registry workflow.
+2. Rename the placeholder service. Every top-level folder containing a `Dockerfile` is a deployable
+   service and is built and pushed automatically. Point the docker entry's `directory` in
+   `.github/dependabot.yml` at each service folder, one entry per service.
+3. Give each service its checks. A folder with a `package.json` gets `npm ci` followed by available
    `lint`, `test`, and `build` scripts. A folder with a `Makefile` must provide `install`, `lint`, and
    `test` targets.
-3. Update `compose.yaml` for local development. Put bind mounts, hot reload, and development ports
+4. Update `compose.yaml` for local development. Put bind mounts, hot reload, and development ports
    in `compose.override.yaml`. Update `compose.production.yaml` to pull the prebuilt GHCR images,
    define health checks and persistent volumes, avoid published host ports, and cap CPU and memory.
-4. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
+5. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
    to this README.
-5. Register the project by opening a pull request on
-   [platform](https://github.com/project-graphite/platform) with `projects/<slug>.yml`.
 
 Use named service folders even for a single-service project. Images are published as
 `ghcr.io/project-graphite/<repo>/<service>`, and each image name must match its service in the
