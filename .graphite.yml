@@ -64,7 +64,7 @@ projects:
       # source:
       #   file: compose.production.yaml         # required. Path to the compose file, no leading slash, no "..".
       #   service: web                          # required. Lowercase service name from that compose file to expose.
-      #   port: 8000                             # required. 1-65535, the container port that service listens on.
+      #   port: 80                               # required. 1-65535, the container port that service listens on.
       # secrets: [SECRET_KEY, POSTGRES_PASSWORD] # optional. UPPER_SNAKE_CASE env var names Coolify must inject.
 
       # kind: pages
