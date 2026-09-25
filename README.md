@@ -50,5 +50,5 @@ reviewed action.
 ## Conventions
 
 Pull request titles follow `type(scope): summary` using one of `feat fix chore refactor docs test ci
-perf revert style build`. Squash merges put the title into the history of `main`, so the title is
-checked instead of the branch name.
+perf revert style build`. Squash merges put the title into the history of `main`, so the title
+matters more than the branch name.
