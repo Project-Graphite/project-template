@@ -33,8 +33,8 @@ Delete this section once the checklist is done.
 3. Give each service its checks. A folder with a `package.json` gets `npm ci` followed by available
    `lint`, `test`, and `build` scripts. A folder with a `Makefile` must provide `install`, `lint`, and
    `test` targets.
-4. Update `compose.yaml` for local development. Put bind mounts, hot reload, and development ports
-   in `compose.override.yaml`. Update `compose.production.yaml` to pull the prebuilt GHCR images,
+4. Update `compose.yaml` for local development, with its bind mounts, hot reload, and development
+   ports. Update `compose.production.yaml` to pull the prebuilt GHCR images,
    define health checks and persistent volumes, avoid published host ports, and cap CPU and memory.
 5. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
    to this README.
