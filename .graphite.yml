@@ -35,6 +35,7 @@ projects:
 
     status: source-only # required. One of: live | wip | archived | source-only.
     listed: false # optional, defaults to true. Set false to keep an entry out of the public portfolio (used by platform-internal repos like this template).
+    pinned: false # optional, defaults to false. Set true to always show this project on the portfolio home page, ahead of the others.
 
     # showcase:
     #   Optional. Add this block once the project has a real story to tell — a short case study
