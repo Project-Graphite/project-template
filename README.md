@@ -43,9 +43,13 @@ Use named service folders even for a single-service project. Images are publishe
 `ghcr.io/project-graphite/<repo>/<service>`, and each image name must match its service in the
 production Compose file.
 
+`.github/workflows/pipeline.yml` runs the shared `reusable-pipeline.yml`. Turn a stage off with its
+switch, e.g. `with: { changelog: false }`, or replace the file with calls to the individual shared
+workflows.
+
 Until the platform entry is merged, the `Deploy` job on `main` fails with a clear message. Builds
-and checks continue; only the release record is blocked. Coolify deployment remains a separate,
-reviewed action.
+and checks continue. Once the repository has the `COOLIFY_WEBHOOK` and `COOLIFY_TOKEN` secrets, the
+same job deploys to Coolify.
 
 ## Conventions
 
