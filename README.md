@@ -35,17 +35,17 @@ Delete this section once the checklist is done.
    `test` targets.
 4. Update `compose.yaml` for local development, with its bind mounts, hot reload, and development
    ports.
-5. For a `compose` deploy, open a pull request in `platform` adding `deploy/<slug>/values.yaml`:
-   the production services, health checks, volumes, resource limits and the names of its secrets.
-   Ask an organisation owner to add the secret values. Merging the values deploys it. For a
-   `pages` deploy, the values are only `enabled: true` and an optional `tag` pin; the build comes
-   from `deploy.source` in `.graphite.yml`.
+5. For a `compose` deploy, open a pull request in `platform` adding `deploy/<slug>/core.yaml`, the
+   services and any `postgres`, `redis` or `backup`, and `deploy/<slug>/values.yaml`, their env,
+   secret names and memory. Ask an organisation owner to add the secret values. Merging it deploys
+   it. For a `pages` deploy, `deploy/<slug>/values.yaml` holds only `enabled: true` and an optional
+   `tag` pin; the build comes from `deploy.source` in `.graphite.yml`.
 6. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
    to this README.
 
 Use named service folders even for a single-service project. Images are published as
 `ghcr.io/project-graphite/<repo>/<service>`, and each one is a service of the same name in the
-project's platform values.
+project's platform `core.yaml`.
 
 `.github/workflows/pipeline.yml` runs the shared `reusable-pipeline.yml`. Turn a stage off with its
 switch, e.g. `with: { changelog: false }`, or replace the file with calls to the individual shared
