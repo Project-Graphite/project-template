@@ -28,9 +28,7 @@ projects:
 
       # kind: compose
       # host: my-project.project-graphite.com # <label>.project-graphite.com
-      # source: { file: compose.production.yaml, service: web, port: 80 }
-      # secrets: [SECRET_KEY] # UPPER_SNAKE_CASE[]
 
       # kind: pages
       # host: my-project.project-graphite.com # <label>.project-graphite.com
-      # source: { directory: web, output: dist }
+      # source: { directory: web, output: dist, command: npm run build }
