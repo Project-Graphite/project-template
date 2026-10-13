@@ -37,7 +37,9 @@ Delete this section once the checklist is done.
    ports.
 5. For a `compose` deploy, open a pull request in `platform` adding `deploy/<slug>/values.yaml`:
    the production services, health checks, volumes, resource limits and the names of its secrets.
-   Ask an organisation owner to add the secret values. Merging the values deploys it.
+   Ask an organisation owner to add the secret values. Merging the values deploys it. For a
+   `pages` deploy, the values are only `enabled: true` and an optional `tag` pin; the build comes
+   from `deploy.source` in `.graphite.yml`.
 6. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
    to this README.
 
