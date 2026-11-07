@@ -26,7 +26,9 @@ Delete this section once the checklist is done.
 
 1. Replace the registry entry in `.graphite.yml`, which is the template's own. Set `slug` to the
    lowercase repository name and update `name`, `summary`, `tags`, `owner`, `authors`, `status`,
-   `listed`, and `deploy`. Pushing it to `main` registers the project through the Registry workflow.
+   `listed`, and `deploy`. Pushing it to `main` registers the project: `platform`'s **Sync registry**
+   reads every repository's `.graphite.yml` every hour, and sooner when Graphite Hub's webhook
+   dispatches it.
 2. Rename the placeholder service. Every top-level folder containing a `Dockerfile` is a deployable
    service and is built and pushed automatically. Point the docker entry's `directory` in
    `.github/dependabot.yml` at each service folder, one entry per service.
@@ -35,25 +37,25 @@ Delete this section once the checklist is done.
    `test` targets.
 4. Update `compose.yaml` for local development, with its bind mounts, hot reload, and development
    ports.
-5. For a `compose` deploy, open a pull request in `platform` adding `deploy/<slug>/core.yaml`, the
-   services and any `postgres`, `redis` or `backup`, and `deploy/<slug>/values.yaml`, their env,
-   secret names and memory. Ask an organisation owner to add the secret values. Merging it deploys
-   it. For a `pages` deploy, `deploy/<slug>/values.yaml` holds only `enabled: true` and an optional
-   `tag` pin; the build comes from `deploy.source` in `.graphite.yml`.
+5. For a `compose` deploy, open a pull request in `platform` adding `deploy/<slug>/compose.yaml`,
+   the services extending the fragments in `shared/`, and `deploy/<slug>/values`, the settings that
+   differ from a default. Ask an organisation owner to enter the `${NAME:?}` secrets in the console.
+   Merging it deploys it. For a `pages` deploy, `deploy/<slug>/values` holds only `IMAGE_TAG`; the
+   build comes from `deploy.source` in `.graphite.yml`.
 6. Add a screenshot or short GIF, the eventual live link, the stack, and clear local instructions
    to this README.
 
 Use named service folders even for a single-service project. Images are published as
 `ghcr.io/project-graphite/<repo>/<service>`, and each one is a service of the same name in the
-project's platform `core.yaml`.
+project's platform `compose.yaml`.
 
 `.github/workflows/pipeline.yml` runs the shared `reusable-pipeline.yml`. Turn a stage off with its
 switch, e.g. `with: { changelog: false }`, or replace the file with calls to the individual shared
 workflows.
 
 Until the platform entry is merged, the `Deploy` job on `main` fails with a clear message. Builds
-and checks continue. After that, each `main` push records its image tag in `platform`, which
-deploys it.
+and checks continue. After that, each `main` push writes its image tag into
+`platform/deploy/<slug>/values`, which deploys it.
 
 ## Conventions
 
